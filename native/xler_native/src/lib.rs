@@ -149,7 +149,7 @@ mod tests {
         assert!(result.is_ok());
         let data = result.unwrap();
         assert_eq!(data.len(), 701, "Expected 701 rows");
-        assert!(data[0].len() > 0, "First row should have columns");
+        assert!(!data[0].is_empty(), "First row should have columns");
     }
 
     #[test]
@@ -191,7 +191,7 @@ mod tests {
         let result = parse_worksheet_impl(&test_file_path("unicode_data.xlsx"), "Sheet1");
         assert!(result.is_ok());
         let data = result.unwrap();
-        assert!(data.len() > 0, "Should have data");
+        assert!(!data.is_empty(), "Should have data");
         // Check that Unicode is preserved
         let has_unicode = data.iter().any(|row| {
             row.iter()
@@ -211,9 +211,9 @@ mod tests {
         assert!(summary.is_ok());
 
         // Verify each has data
-        assert!(sheet1.unwrap().len() > 0);
-        assert!(data.unwrap().len() > 0);
-        assert!(summary.unwrap().len() > 0);
+        assert!(!sheet1.unwrap().is_empty());
+        assert!(!data.unwrap().is_empty());
+        assert!(!summary.unwrap().is_empty());
     }
 
     #[test]
@@ -221,6 +221,6 @@ mod tests {
         let result = parse_worksheet_impl(&test_file_path("special_chars.xlsx"), "Data & Stats");
         assert!(result.is_ok());
         let data = result.unwrap();
-        assert!(data.len() > 0, "Should have data with special chars");
+        assert!(!data.is_empty(), "Should have data with special chars");
     }
 }
