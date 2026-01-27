@@ -1,10 +1,14 @@
 defmodule Xler.MixProject do
   use Mix.Project
 
+  @version "VERSION"
+            |> File.read!()
+            |> String.trim()
+
   def project do
     [
       app: :xler,
-      version: project_version(),
+      version: @version,
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       description: description(),
@@ -19,13 +23,6 @@ defmodule Xler.MixProject do
     [
       extra_applications: [:logger]
     ]
-  end
-
-  # Returns the current project version from VERSION
-  defp project_version do
-    "VERSION"
-    |> File.read!()
-    |> String.trim()
   end
 
   # Run "mix help deps" to learn about dependencies.
