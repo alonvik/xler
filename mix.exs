@@ -1,9 +1,7 @@
 defmodule Xler.MixProject do
   use Mix.Project
 
-  @version "VERSION"
-            |> File.read!()
-            |> String.trim()
+  @version "0.7.0"
 
   def project do
     [
