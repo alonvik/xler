@@ -43,7 +43,6 @@ fn parse_worksheet_impl(filename: &str, worksheet: &str) -> Result<Vec<Vec<Strin
         Ok(range) => {
             let rows: Vec<Vec<String>> = range
                 .rows()
-                .into_iter()
                 .map(|cols| cols.iter().map(|c| c.to_string()).collect())
                 .collect();
             Ok(rows)
