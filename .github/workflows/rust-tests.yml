@@ -1,0 +1,66 @@
+name: Rust Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'native/xler_native/**'
+      - '.github/workflows/rust-tests.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'native/xler_native/**'
+      - '.github/workflows/rust-tests.yml'
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+      
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: native/xler_native
+      
+      - name: Run tests
+        run: cargo test --manifest-path native/xler_native/Cargo.toml --lib --tests --verbose
+      
+      - name: Run tests (release)
+        run: cargo test --manifest-path native/xler_native/Cargo.toml --lib --tests --release --verbose
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: native/xler_native
+      
+      - name: Run clippy
+        run: cargo clippy --manifest-path native/xler_native/Cargo.toml --lib --tests -- -D warnings
+
+  fmt:
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      
+      - name: Check formatting
+        run: cargo fmt --manifest-path native/xler_native/Cargo.toml -- --check
