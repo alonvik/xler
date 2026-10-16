@@ -227,32 +227,24 @@ dependencies = [
 ]
 
 [[package]]
-name = "regex-lite"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "943f41321c63ef1c92fd763bfe054d2668f7f225a5c29f0105903dc2fc04ba30"
-
-[[package]]
 name = "rustler"
-version = "0.38.0"
+version = "0.39.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "60ac8495cb6091c1f8bd0c3bb816cd4e6f0a073f396d77eb602cb7f0615212de"
+checksum = "5256cd1465ad8c5450ee3392263375108cb70382be09dac76ae7da521446bdde"
 dependencies = [
  "inventory",
  "libc",
  "libloading",
- "regex-lite",
  "rustler_codegen",
 ]
 
 [[package]]
 name = "rustler_codegen"
-version = "0.38.0"
+version = "0.39.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "780a2a6b7e3cfac35820473f85cec1cd84d1bdd37ebcb4e24fb126ef0f074838"
+checksum = "976aaa45a28908eb2433b1afc70bf8c39eabd0ee45e8de24b2ae53dfb8876b84"
 dependencies = [
  "heck",
- "inventory",
  "proc-macro2",
  "quote",
  "syn",
@@ -278,9 +270,9 @@ checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
 
 [[package]]
 name = "syn"
-version = "2.0.106"
+version = "3.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ede7c438028d4436d71104916910f5bb611972c5cfd7f89b8300a8186e6fada6"
+checksum = "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b"
 dependencies = [
  "proc-macro2",
  "quote",
