@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 [dependencies]
 rustler = { version = "0.38.0", default-features = false, features = ["derive"] }
 lazy_static = "1.5"
-calamine = "0.36.1"
+calamine = "0.37.0"
 
 [features]
 default = ["nif_version_2_15"]
